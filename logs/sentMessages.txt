@@ -1,0 +1,60 @@
+Sending Message:0 ThreadID:55
+Sending Message:0 ThreadID:58
+Sending Message:0 ThreadID:57
+Sending Message:0 ThreadID:56
+Sending Message:0 ThreadID:54
+[SEND] (INBUILT MESSAGE) ThreadID:56 Destination(queue):testQueue SentMessageCount:1 CountToSend:5
+[SEND] (INBUILT MESSAGE) ThreadID:57 Destination(queue):testQueue SentMessageCount:1 CountToSend:5
+[SEND] (INBUILT MESSAGE) ThreadID:58 Destination(queue):testQueue SentMessageCount:1 CountToSend:5
+[SEND] (INBUILT MESSAGE) ThreadID:55 Destination(queue):testQueue SentMessageCount:1 CountToSend:5
+[SEND] (INBUILT MESSAGE) ThreadID:54 Destination(queue):testQueue SentMessageCount:1 CountToSend:5
+Sending Message:1 ThreadID:56
+[SEND] (INBUILT MESSAGE) ThreadID:56 Destination(queue):testQueue SentMessageCount:2 CountToSend:5
+Sending Message:1 ThreadID:57
+[SEND] (INBUILT MESSAGE) ThreadID:57 Destination(queue):testQueue SentMessageCount:2 CountToSend:5
+Sending Message:1 ThreadID:54
+[SEND] (INBUILT MESSAGE) ThreadID:54 Destination(queue):testQueue SentMessageCount:2 CountToSend:5
+Sending Message:1 ThreadID:58
+[SEND] (INBUILT MESSAGE) ThreadID:58 Destination(queue):testQueue SentMessageCount:2 CountToSend:5
+Sending Message:1 ThreadID:55
+Sending Message:2 ThreadID:57
+Sending Message:2 ThreadID:54
+[SEND] (INBUILT MESSAGE) ThreadID:54 Destination(queue):testQueue SentMessageCount:3 CountToSend:5
+[SEND] (INBUILT MESSAGE) ThreadID:55 Destination(queue):testQueue SentMessageCount:2 CountToSend:5
+[SEND] (INBUILT MESSAGE) ThreadID:57 Destination(queue):testQueue SentMessageCount:3 CountToSend:5
+Sending Message:2 ThreadID:58
+Sending Message:2 ThreadID:56
+[SEND] (INBUILT MESSAGE) ThreadID:56 Destination(queue):testQueue SentMessageCount:3 CountToSend:5
+[SEND] (INBUILT MESSAGE) ThreadID:58 Destination(queue):testQueue SentMessageCount:3 CountToSend:5
+Sending Message:3 ThreadID:54
+Sending Message:3 ThreadID:57
+[SEND] (INBUILT MESSAGE) ThreadID:54 Destination(queue):testQueue SentMessageCount:4 CountToSend:5
+[SEND] (INBUILT MESSAGE) ThreadID:57 Destination(queue):testQueue SentMessageCount:4 CountToSend:5
+Sending Message:2 ThreadID:55
+[SEND] (INBUILT MESSAGE) ThreadID:55 Destination(queue):testQueue SentMessageCount:3 CountToSend:5
+Sending Message:3 ThreadID:56
+[SEND] (INBUILT MESSAGE) ThreadID:56 Destination(queue):testQueue SentMessageCount:4 CountToSend:5
+Sending Message:3 ThreadID:58
+[SEND] (INBUILT MESSAGE) ThreadID:58 Destination(queue):testQueue SentMessageCount:4 CountToSend:5
+Sending Message:4 ThreadID:54
+Sending Message:4 ThreadID:57
+[SEND] (INBUILT MESSAGE) ThreadID:57 Destination(queue):testQueue SentMessageCount:5 CountToSend:5
+Sending Message:4 ThreadID:56
+Sending Message:3 ThreadID:55
+Closing publisher | ThreadID : 57
+Sending Message:4 ThreadID:58
+[SEND] (INBUILT MESSAGE) ThreadID:58 Destination(queue):testQueue SentMessageCount:5 CountToSend:5
+Closing publisher | ThreadID : 58
+[SEND] (INBUILT MESSAGE) ThreadID:55 Destination(queue):testQueue SentMessageCount:4 CountToSend:5
+[SEND] (INBUILT MESSAGE) ThreadID:54 Destination(queue):testQueue SentMessageCount:5 CountToSend:5
+[SEND] (INBUILT MESSAGE) ThreadID:56 Destination(queue):testQueue SentMessageCount:5 CountToSend:5
+Closing publisher | ThreadID : 56
+Sending Message:4 ThreadID:55
+[SEND] (INBUILT MESSAGE) ThreadID:55 Destination(queue):testQueue SentMessageCount:5 CountToSend:5
+Closing publisher | ThreadID : 54
+Closing publisher | ThreadID : 55
+Publisher closed | ThreadID : 56
+Publisher closed | ThreadID : 55
+Publisher closed | ThreadID : 57
+Publisher closed | ThreadID : 54
+Publisher closed | ThreadID : 58

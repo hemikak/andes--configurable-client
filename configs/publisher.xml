@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- const.xml -->
+<config>
+    <base>
+        <exchangeType>QUEUE</exchangeType>
+        <destinationName>testQueue</destinationName>
+        <userName>admin</userName>
+        <password>admin</password>
+        <hostName>localhost</hostName>
+        <port>5672</port>
+        <queryStringForConnection>,</queryStringForConnection>
+        <printsPerMessageCount>1</printsPerMessageCount>
+        <runningDelay>0</runningDelay>
+        <publisher count="5">
+            <numberOfMessagesToSend>5</numberOfMessagesToSend>
+            <jmsMessageType>TEXT</jmsMessageType>
+        </publisher>
+        <consumer>
+            <filePathToWriteReceivedMessages>/Users/hemikakodikara/mb/workspace/MB-FailOver/logs/receivedMessages.txt</filePathToWriteReceivedMessages>
+            <acknowledgeMode>AUTO_ACKNOWLEDGE</acknowledgeMode>
+        </consumer>
+    </base>
+</config>

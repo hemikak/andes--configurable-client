@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- const.xml -->
+<config>
+    <base>
+        <exchangeType>queue</exchangeType>
+        <destinationName>testQueue</destinationName>
+        <userName>admin</userName>
+        <password>admin</password>
+        <hostName>localhost</hostName>
+        <port>5672</port>
+        <queryStringForConnection></queryStringForConnection>
+        <printsPerMessageCount></printsPerMessageCount>
+        <runningDelay></runningDelay>
+        <consumer>
+            <filePathToWriteReceivedMessages></filePathToWriteReceivedMessages>
+            <maximumMessagesToReceived></maximumMessagesToReceived>
+            <subscriptionID></subscriptionID>
+            <durable></durable>
+        </consumer>
+    </base>
+</config>
