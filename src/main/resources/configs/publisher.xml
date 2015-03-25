@@ -3,17 +3,18 @@
 <config>
     <base>
         <exchangeType>QUEUE</exchangeType>
-        <destinationName>testQueue</destinationName>
+        <destinationName>testQueue7</destinationName>
         <userName>admin</userName>
         <password>admin</password>
         <hostName>localhost</hostName>
         <port>5672</port>
-        <queryStringForConnection>,</queryStringForConnection>
+        <queryStringForConnection></queryStringForConnection>
         <printsPerMessageCount>1</printsPerMessageCount>
         <runningDelay>0</runningDelay>
-        <publisher count="5">
+        <publisher>
             <numberOfMessagesToSend>5</numberOfMessagesToSend>
             <jmsMessageType>TEXT</jmsMessageType>
+            <filePathToWritePublishedMessages>/Users/hemikakodikara/mb/workspace/MB-FailOver/logs/sentMessages.txt</filePathToWritePublishedMessages>
         </publisher>
         <consumer>
             <filePathToWriteReceivedMessages>/Users/hemikakodikara/mb/workspace/MB-FailOver/logs/receivedMessages.txt</filePathToWriteReceivedMessages>
@@ -21,3 +22,5 @@
         </consumer>
     </base>
 </config>
+
+        <!--?connectdelay='15000'&amp;connecttimeout='30000'&amp;retries='3';tcp://10.23.156.141:5672?connectdelay='15000'&amp;connecttimeout='30000'&amp;retries='3';tcp://10.27.139.239:5672?connectdelay='15000'&amp;connecttimeout='30000'&amp;retries='3'&amp;failover='roundrobin'-->

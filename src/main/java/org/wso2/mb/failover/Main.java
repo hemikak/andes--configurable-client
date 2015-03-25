@@ -22,26 +22,26 @@ import java.io.IOException;
  */
 public class Main {
     public static void main(String[] args)
-            throws ConfigurationException, JMSException, NamingException, AndesClientConfigurationException, AndesClientException, IOException {
-        Logger log = LoggerFactory.getLogger(Main.class);
+            throws ConfigurationException, JMSException, NamingException,
+                   AndesClientConfigurationException, AndesClientException, IOException {
+        final Logger log = LoggerFactory.getLogger(Main.class);
         String xmlFilePath = args[0];
         log.info("Config File = " + xmlFilePath);
         XMLConfiguration config = new XMLConfiguration(xmlFilePath);
         AndesClient consumerClient = null;
-        if(0 < config.configurationsAt("base.consumer").size()){
+        if (0 < config.configurationsAt("base.consumer").size()) {
             SubnodeConfiguration consumerNode = config.configurationAt("base.consumer");
             int count = consumerNode.getInt("[@count]", 1);
 
             log.info("Creating consumer(s)...");
-            AndesJMSConsumerClientConfiguration consumerConfig = new AndesJMSConsumerClientConfiguration(xmlFilePath);
+            AndesJMSConsumerClientConfiguration consumerConfig = new
+                    AndesJMSConsumerClientConfiguration(xmlFilePath);
 
-            if (log.isDebugEnabled()) {
-                log.info(consumerConfig.toString());
-            }
+            log.info(consumerConfig.toString());
 
             consumerClient = new AndesClient(consumerConfig, count, true);
             consumerClient.startClient();
-        }else{
+        } else {
             log.info("No consumers are created");
         }
 
@@ -51,28 +51,49 @@ public class Main {
             e.printStackTrace();
         }
 
-        AndesClient publisherClient;
-        if(0 < config.configurationsAt("base.publisher").size()){
+        AndesClient publisherClient = null;
+        if (0 < config.configurationsAt("base.publisher").size()) {
             SubnodeConfiguration publisherNode = config.configurationAt("base.publisher");
             int count = publisherNode.getInt("[@count]", 1);
 
             log.info("Creating publisher(s)...");
-            AndesJMSPublisherClientConfiguration publisherConfig = new AndesJMSPublisherClientConfiguration(xmlFilePath);
+            AndesJMSPublisherClientConfiguration publisherConfig = new
+                    AndesJMSPublisherClientConfiguration(xmlFilePath);
 
-            if (log.isDebugEnabled()) {
-                log.info(publisherConfig.toString());
-            }
+            log.info(publisherConfig.toString());
 
             publisherClient = new AndesClient(publisherConfig, count, true);
             publisherClient.startClient();
-        }else{
+        } else {
             log.info("No publishers are created");
         }
 
         log.info("Clients created...");
 
-        if(null != consumerClient){
-            AndesClientUtils.waitForMessagesAndShutdown(consumerClient, AndesClientConstants.DEFAULT_RUN_TIME);
+        final AndesClient finalConsumerClient = consumerClient;
+        final AndesClient finalPublisherClient = publisherClient;
+
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            @Override
+            public void run() {
+                try {
+                    if (finalPublisherClient != null) {
+                        finalPublisherClient.stopClient();
+                    }
+                    if (finalConsumerClient != null) {
+                        finalConsumerClient.stopClient();
+                    }
+
+                    AndesClientUtils.flushPrintWriters();
+                } catch (JMSException e) {
+                    log.error(e.getMessage(), e);
+                }
+            }
+        });
+
+        if (null != consumerClient) {
+            AndesClientUtils.waitForMessagesAndShutdown(consumerClient, AndesClientConstants
+                                                                            .DEFAULT_RUN_TIME * 15);
         }
     }
 }

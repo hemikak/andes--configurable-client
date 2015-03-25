@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- const.xml -->
+<config>
+    <base>
+        <exchangeType>QUEUE</exchangeType>
+        <destinationName>testQueue11</destinationName>
+        <userName>admin</userName>
+        <password>admin</password>
+        <hostName>10.23.10.50</hostName>
+        <port>5672</port>
+        <printsPerMessageCount>100</printsPerMessageCount>
+        <queryStringForConnection>?connectdelay='250'&amp;connecttimeout='500'&amp;retries='3';tcp://10.23.156.141:5672?connectdelay='250'&amp;connecttimeout='500'&amp;retries='3'&amp;failover='roundrobin'</queryStringForConnection>
+        <printsPerMessageCount>1</printsPerMessageCount>
+        <runningDelay>0</runningDelay>
+        <publisher count="5">
+            <numberOfMessagesToSend>100000</numberOfMessagesToSend>
+            <jmsMessageType>TEXT</jmsMessageType>
+            <filePathToWritePublishedMessages>/mnt/mb-clients/config-client/logs/sentMessages.txt</filePathToWritePublishedMessages>
+        </publisher>
+    </base>
+</config>

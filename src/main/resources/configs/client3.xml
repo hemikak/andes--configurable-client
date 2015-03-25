@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- const.xml -->
+<config>
+    <base>
+        <exchangeType>TOPIC</exchangeType>
+        <destinationName>testTopic1</destinationName>
+        <userName>admin</userName>
+        <password>admin</password>
+        <hostName>10.27.139.239</hostName>
+        <port>5672</port>
+        <queryStringForConnection></queryStringForConnection>
+        <printsPerMessageCount>1</printsPerMessageCount>
+        <runningDelay>0</runningDelay>
+        <publisher>
+            <numberOfMessagesToSend>10000</numberOfMessagesToSend>
+            <jmsMessageType>TEXT</jmsMessageType>
+            <filePathToWritePublishedMessages>/mnt/mb-clients/config-client/logs/sentMessages.txt</filePathToWritePublishedMessages>
+        </publisher>
+        <consumer>
+            <filePathToWriteReceivedMessages>/mnt/mb-clients/config-client/logs/receivedMessages.txt</filePathToWriteReceivedMessages>
+            <acknowledgeMode>AUTO_ACKNOWLEDGE</acknowledgeMode>
+        </consumer>
+    </base>
+</config>
+
