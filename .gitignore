@@ -16,6 +16,6 @@ log/
 target/
 
 # App
-/receivedMessages.txt
+receivedMessages.txt
 /sentMessages.txt
 lib/
