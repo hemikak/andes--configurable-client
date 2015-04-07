@@ -3,21 +3,20 @@
 <config>
     <base>
         <exchangeType>QUEUE</exchangeType>
-        <destinationName>testQueue7</destinationName>
+        <destinationName>q1</destinationName>
         <userName>admin</userName>
         <password>admin</password>
         <hostName>localhost</hostName>
         <port>5672</port>
-        <queryStringForConnection></queryStringForConnection>
         <printsPerMessageCount>1</printsPerMessageCount>
         <runningDelay>0</runningDelay>
         <publisher>
             <numberOfMessagesToSend>5</numberOfMessagesToSend>
             <jmsMessageType>TEXT</jmsMessageType>
-            <filePathToWritePublishedMessages>/Users/hemikakodikara/mb/workspace/MB-FailOver/logs/sentMessages.txt</filePathToWritePublishedMessages>
+            <filePathToWritePublishedMessages>/Users/hemikakodikara/mb/workspace/MB-FailOver/src/main/resources/logs/sentMessages.txt</filePathToWritePublishedMessages>
         </publisher>
         <consumer>
-            <filePathToWriteReceivedMessages>/Users/hemikakodikara/mb/workspace/MB-FailOver/logs/receivedMessages.txt</filePathToWriteReceivedMessages>
+            <filePathToWriteReceivedMessages>/Users/hemikakodikara/mb/workspace/MB-FailOver/src/main/resources/logs/receivedMessages.txt</filePathToWriteReceivedMessages>
             <acknowledgeMode>AUTO_ACKNOWLEDGE</acknowledgeMode>
         </consumer>
     </base>

@@ -1,3 +1,9 @@
+/**
+ * A class to create subscribers and publishers for JMS.
+ * @author Hemika Kodikara
+ * @version 1.0-SNAPSHOT
+ * @date 07/04/2015
+ */
 package org.wso2.mb.failover;
 
 import org.apache.commons.configuration.ConfigurationException;
@@ -18,7 +24,7 @@ import javax.naming.NamingException;
 import java.io.IOException;
 
 /**
- *
+ * Executable main method which creates publishers and subscribers for JMS messages.
  */
 public class Main {
     public static void main(String[] args)
@@ -48,7 +54,7 @@ public class Main {
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            // Nothing can be done here. Consider yourself unlucky if you come here.
         }
 
         AndesClient publisherClient = null;
@@ -79,14 +85,18 @@ public class Main {
                 try {
                     if (finalPublisherClient != null) {
                         finalPublisherClient.stopClient();
+                        log.info("Publisher TPS : " + finalPublisherClient.getPublisherTPS());
                     }
+
                     if (finalConsumerClient != null) {
                         finalConsumerClient.stopClient();
+                        log.info("Consumer TPS : " + finalConsumerClient.getConsumerTPS());
+                        log.info("Average Latency : " + finalConsumerClient.getAverageLatency());
                     }
 
                     AndesClientUtils.flushPrintWriters();
                 } catch (JMSException e) {
-                    log.error(e.getMessage(), e);
+                    log.error("Error on shutdown hook.", e);
                 }
             }
         });
@@ -94,6 +104,14 @@ public class Main {
         if (null != consumerClient) {
             AndesClientUtils.waitForMessagesAndShutdown(consumerClient, AndesClientConstants
                                                                             .DEFAULT_RUN_TIME * 15);
+        }
+
+        if (publisherClient != null) {
+            log.info("Publisher TPS : " + publisherClient.getPublisherTPS());
+        }
+        if (consumerClient != null) {
+            log.info("Consumer TPS : " + consumerClient.getConsumerTPS());
+            log.info("Average Latency : " + consumerClient.getAverageLatency());
         }
     }
 }
