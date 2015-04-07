@@ -51,12 +51,6 @@ public class Main {
             log.info("No consumers are created");
         }
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            // Nothing can be done here. Consider yourself unlucky if you come here.
-        }
-
         AndesClient publisherClient = null;
         if (0 < config.configurationsAt("base.publisher").size()) {
             SubnodeConfiguration publisherNode = config.configurationAt("base.publisher");
@@ -83,15 +77,17 @@ public class Main {
             @Override
             public void run() {
                 try {
-                    if (finalPublisherClient != null) {
+                    if (null != finalPublisherClient) {
                         finalPublisherClient.stopClient();
                         log.info("Publisher TPS : " + finalPublisherClient.getPublisherTPS());
+                        log.info("Publisher messages : " + finalPublisherClient.getSentMessageCount());
                     }
 
-                    if (finalConsumerClient != null) {
+                    if (null != finalConsumerClient) {
                         finalConsumerClient.stopClient();
                         log.info("Consumer TPS : " + finalConsumerClient.getConsumerTPS());
                         log.info("Average Latency : " + finalConsumerClient.getAverageLatency());
+                        log.info("Consumer messages : " + finalConsumerClient.getReceivedMessageCount());
                     }
 
                     AndesClientUtils.flushPrintWriters();
@@ -106,12 +102,14 @@ public class Main {
                                                                             .DEFAULT_RUN_TIME * 15);
         }
 
-        if (publisherClient != null) {
+        if (null != publisherClient) {
             log.info("Publisher TPS : " + publisherClient.getPublisherTPS());
+            log.info("Publisher messages : " + publisherClient.getSentMessageCount());
         }
-        if (consumerClient != null) {
+        if (null != consumerClient) {
             log.info("Consumer TPS : " + consumerClient.getConsumerTPS());
             log.info("Average Latency : " + consumerClient.getAverageLatency());
+            log.info("Consumer messages : " + consumerClient.getReceivedMessageCount());
         }
     }
 }
